@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="my.css">
+    <title>친구 수정</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark custom-navbar shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">👥 내 친구 관리</a>
+            <a href="view.html" class="btn btn-outline-light btn-sm">상세보기로</a>
+        </div>
+    </nav>
+
+    <main class="container mt-5" style="min-height: 70vh;">
+        <div class="card custom-card mx-auto" style="max-width: 800px;">
+            <div class="card-body p-4">
+                <h3 class="card-title mb-4 border-bottom pb-2">친구 정보 수정</h3>
+
+                <form id="editForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">이름 *</label>
+                            <input type="text" id="fname" class="form-control" value="임기현">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-6">
+                                <label class="form-label">관계 *</label>
+                                <input type="text" id="frel" class="form-control" value="학교 친구"
+                                    placeholder="ex: 친구, 교수님">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">전화번호</label>
+                            <input type="text" id="fphone" class="form-control" value="010-1234-5678">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">이메일 *</label>
+                            <input type="email" id="femail" class="form-control" value="123@email.com">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">생일 *</label>
+                            <input type="date" id="fbirth" class="form-control" value="2004-01-28">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">주소</label>
+                            <input type="text" id="faddr" class="form-control" value="부산광역시 기장군 정관읍">
+                        </div>
+                    </div>
+
+                    <div class="mt-4 text-end">
+                        <a href="view.html" class="btn btn-secondary btn-mobile-full">취소</a>
+                        <button type="button" class="btn btn-primary btn-mobile-full" onclick="updateData()">수정
+                            완료</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="custom-footer text-center text-muted">
+        <div class="container"><small>&copy; 2026 Friend Manager.</small></div>
+    </footer>
+
+    <script>
+        function updateData() {
+            let name = document.getElementById('fname').value;
+            let rel = document.getElementById('frel').value;
+            let email = document.getElementById('femail').value;
+            let birth = document.getElementById('fbirth').value;
+
+            if (name.length < 2) { alert("이름을 2글자 이상 정확히 입력해주세요."); return; }
+            if (rel === "") { alert("관계를 반드시 선택해주세요."); return; }
+            if (!email.includes("@")) { alert("올바른 이메일 형식을 입력해주세요."); return; }
+            if (birth === "") { alert("생일을 입력해주세요."); return; }
+
+            if (confirm("게시물을 수정할까요?")) {
+                window.location.href = "view.html";
+            }
+        }
+    </script>
+</body>
+
+</html>
